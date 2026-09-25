@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Process ROI Library</title>
+<meta name="description" content="Quantified, named-company case studies of AI integrated into business processes, with confidence tiers and sources. Refreshed monthly.">
+<style>
+  :root {
+    --bg: #f7f7f5; --surface: #ffffff; --ink: #1c1c1a; --muted: #6b6b66; --line: #e3e3de;
+    --accent: #1f5f8b; --accent-ink: #ffffff; --chip: #eef2f5;
+    --high: #2e7d4f; --mh: #4a8a3a; --med: #b07a1a; --low: #9a5a2a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141413; --surface: #1e1e1c; --ink: #ecebe6; --muted: #a09f98; --line: #33332f;
+      --accent: #7fb4dc; --accent-ink: #101010; --chip: #26262a;
+      --high: #7ccf9a; --mh: #9bd07f; --med: #e2b25a; --low: #d9915f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  header { padding: 28px 16px 12px; max-width: 1200px; margin: 0 auto; }
+  h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); margin: 0; }
+  main { max-width: 1200px; margin: 0 auto; padding: 0 16px 48px; }
+  section { margin-top: 28px; }
+  h2 { font-size: 19px; margin: 0 0 10px; }
+  h3 { font-size: 16px; margin: 18px 0 8px; }
+  .lead { margin: 0 0 12px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .stat b { display: block; font-size: 22px; }
+  .stat span { color: var(--muted); font-size: 13px; }
+  ul.summary { padding-left: 20px; margin: 0; }
+  ul.summary li { margin: 6px 0; }
+  .filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin: 10px 0 14px; }
+  .filters input, .filters select { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; }
+  .count { color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 900px; font-size: 14px; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  th { position: sticky; top: 0; background: var(--surface); font-weight: 600; font-size: 13px; color: var(--muted); cursor: pointer; white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; background: var(--chip); white-space: nowrap; }
+  .conf { font-weight: 600; }
+  .conf.High { color: var(--high); } .conf.Medium-high { color: var(--mh); } .conf.Medium { color: var(--med); } .conf.Low-medium { color: var(--low); }
+  .caveat { color: var(--muted); font-size: 13px; }
+  .cards { display: none; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+  .card h4 { margin: 0 0 4px; font-size: 15px; }
+  .card p { margin: 4px 0; font-size: 14px; }
+  .small { font-size: 13px; color: var(--muted); }
+  footer { max-width: 1200px; margin: 0 auto; padding: 16px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+  .err { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  @media (max-width: 720px) {
+    .tablewrap.cases { display: none; }
+    .cards { display: block; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>AI Process Integration ROI Library</h1>
+  <p class="sub">Quantified, named-company evidence of AI in business processes · as of <span id="asof">—</span> · refreshed monthly</p>
+</header>
+<main>
+  <section id="overview">
+    <div class="stats" id="stats"></div>
+    <h2 style="margin-top:18px">What the evidence says</h2>
+    <ul class="summary" id="summary"></ul>
+  </section>
+
+  <section id="cases">
+    <h2>Case library</h2>
+    <p class="lead small" id="bar"></p>
+    <div class="filters">
+      <input id="q" type="search" placeholder="Search company, process, tool, result…">
+      <select id="fFunction"><option value="">All functions</option></select>
+      <select id="fSub"><option value="">All sub-processes</option></select>
+      <select id="fConf"><option value="">All confidence tiers</option></select>
+      <select id="fSource"><option value="">All source types</option></select>
+    </div>
+    <div class="count" id="count"></div>
+    <div class="tablewrap cases">
+      <table id="caseTable">
+        <thead><tr>
+          <th data-k="company">Company</th><th data-k="function">Function</th><th data-k="subprocess">Sub-process</th>
+          <th data-k="ai">What the AI does</th><th data-k="result">Baseline → result</th><th data-k="source_type">Source</th><th data-k="confidence">Confidence</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section id="macro">
+    <h2>Adoption and returns: the macro picture</h2>
+    <div class="tablewrap"><table id="macroTable">
+      <thead><tr><th>Study</th><th>Date</th><th>Sample</th><th>Adoption</th><th>Measurable return</th><th>Notable finding</th></tr></thead>
+      <tbody></tbody></table></div>
+  </section>
+
+  <section id="benchmarks">
+    <h2>Benchmarks to measure against</h2>
+    <div class="tablewrap"><table id="benchTable">
+      <thead><tr><th>Metric</th><th>Typical</th><th>Best-in-class</th><th>Source</th></tr></thead>
+      <tbody></tbody></table></div>
+  </section>
+
+  <section id="tiers">
+    <h2>Confidence tiers</h2>
+    <div class="tablewrap"><table id="tierTable"><thead><tr><th>Tier</th><th>Meaning</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section id="changelog">
+    <h2>Change log</h2>
+    <div class="tablewrap"><table id="logTable"><thead><tr><th>Date</th><th>Change</th><th>Section</th></tr></thead><tbody></tbody></table></div>
+  </section>
+</main>
+<footer>
+  Data file: <a href="library.json">library.json</a>. Full analysis with method, decision framework and measurement guidance lives in the companion document (<a id="docLink" href="#">link</a>). Vendor-reported figures are read from the vendor's own page and are not audited.
+</footer>
+
+<script>
+(function () {
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const $ = id => document.getElementById(id);
+  let data = null, sortKey = 'id', sortDir = 1;
+
+  function fill(select, values) {
+    [...new Set(values)].sort().forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; select.appendChild(o); });
+  }
+  function confClass(c) { return 'conf ' + String(c).replace(/\s+/g, '-'); }
+
+  function currentRows() {
+    const q = $('q').value.trim().toLowerCase();
+    const f = $('fFunction').value, s = $('fSub').value, c = $('fConf').value, t = $('fSource').value;
+    let rows = data.cases.filter(r =>
+      (!f || r.function === f) && (!s || r.subprocess === s) && (!c || r.confidence === c) && (!t || r.source_type === t) &&
+      (!q || [r.company, r.industry, r.subprocess, r.ai, r.tool, r.result, r.caveats].join(' ').toLowerCase().includes(q))
+    );
+    rows.sort((a, b) => { const x = a[sortKey] ?? '', y = b[sortKey] ?? ''; return (x > y ? 1 : x < y ? -1 : 0) * sortDir; });
+    return rows;
+  }
+
+  function renderCases() {
+    const rows = currentRows();
+    $('count').textContent = rows.length + ' of ' + data.cases.length + ' cases';
+    const tb = $('caseTable').querySelector('tbody');
+    tb.innerHTML = rows.map(r => `<tr>
+      <td><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.company)}</a><div class="small">${esc(r.industry)}${r.size ? ' · ' + esc(r.size) : ''}</div></td>
+      <td><span class="tag">${esc(r.function)}</span></td>
+      <td>${esc(r.subprocess)}</td>
+      <td>${esc(r.ai)}${r.tool && r.tool !== '—' ? '<div class="small">' + esc(r.tool) + '</div>' : ''}</td>
+      <td>${esc(r.result)}${r.caveats ? '<div class="caveat">' + esc(r.caveats) + '</div>' : ''}</td>
+      <td>${esc(r.source_type)}</td>
+      <td><span class="${confClass(r.confidence)}">${esc(r.confidence)}</span></td>
+    </tr>`).join('');
+    $('cards').innerHTML = rows.map(r => `<div class="card">
+      <h4><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.company)}</a></h4>
+      <p class="small">${esc(r.industry)}${r.size ? ' · ' + esc(r.size) : ''} · ${esc(r.subprocess)}</p>
+      <p><span class="tag">${esc(r.function)}</span> <span class="${confClass(r.confidence)}">${esc(r.confidence)}</span></p>
+      <p>${esc(r.ai)}${r.tool && r.tool !== '—' ? ' (' + esc(r.tool) + ')' : ''}</p>
+      <p><b>Result:</b> ${esc(r.result)}</p>
+      ${r.caveats ? '<p class="caveat">' + esc(r.caveats) + '</p>' : ''}
+      <p class="small">${esc(r.source_type)}</p>
+    </div>`).join('');
+  }
+
+  function renderStatic() {
+    $('asof').textContent = data.meta.as_of;
+    $('docLink').href = data.meta.doc_url;
+    $('bar').textContent = data.meta.evidence_bar;
+    const n = data.cases.length;
+    const high = data.cases.filter(c => c.confidence === 'High' || c.confidence === 'Medium-high').length;
+    const fin = data.cases.filter(c => c.function === 'Finance & back office').length;
+    const funcs = new Set(data.cases.map(c => c.function)).size;
+    $('stats').innerHTML = [
+      [n, 'quantified cases'], [high, 'High or Medium-high confidence'], [fin, 'finance & back-office cases'],
+      [funcs, 'functions covered'], [data.macro.length, 'macro studies tracked']
+    ].map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join('');
+    $('summary').innerHTML = data.summary.map(s => `<li>${esc(s)}</li>`).join('');
+    $('macroTable').querySelector('tbody').innerHTML = data.macro.map(m => `<tr>
+      <td><a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.study)}</a></td><td>${esc(m.date)}</td><td>${esc(m.sample)}</td>
+      <td>${esc(m.adoption)}</td><td>${esc(m.return)}</td><td>${esc(m.finding)}</td></tr>`).join('');
+    $('benchTable').querySelector('tbody').innerHTML = data.benchmarks.map(b => `<tr>
+      <td>${esc(b.metric)}</td><td>${esc(b.typical)}</td><td>${esc(b.best_in_class)}</td>
+      <td><a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.source)}</a></td></tr>`).join('');
+    $('tierTable').querySelector('tbody').innerHTML = Object.entries(data.meta.confidence_tiers).map(([k, v]) =>
+      `<tr><td><span class="${confClass(k)}">${esc(k)}</span></td><td>${esc(v)}</td></tr>`).join('');
+    $('logTable').querySelector('tbody').innerHTML = data.changelog.map(l => `<tr><td>${esc(l.date)}</td><td>${esc(l.change)}</td><td>${esc(l.section)}</td></tr>`).join('');
+    fill($('fFunction'), data.cases.map(c => c.function));
+    fill($('fSub'), data.cases.map(c => c.subprocess));
+    fill($('fConf'), data.cases.map(c => c.confidence));
+    fill($('fSource'), data.cases.map(c => c.source_type));
+  }
+
+  ['q', 'fFunction', 'fSub', 'fConf', 'fSource'].forEach(id => $(id).addEventListener('input', renderCases));
+  $('caseTable').querySelectorAll('th').forEach(th => th.addEventListener('click', () => {
+    const k = th.dataset.k; if (sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = 1; } renderCases();
+  }));
+
+  fetch('library.json', { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(j => { data = j; renderStatic(); renderCases(); })
+    .catch(e => { document.querySelector('main').innerHTML = '<div class="err">Could not load library.json (' + esc(e.message) + '). Make sure it sits next to index.html.</div>'; });
+})();
+</script>
+</body>
+</html>
