@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Process ROI Analysis</title>
+<meta name="description" content="What the evidence says about measurable ROI from AI in business processes: adoption data, how companies choose what to automate, and how to measure results.">
+<style>
+  :root {
+    --bg: #f7f7f5; --surface: #ffffff; --ink: #1c1c1a; --muted: #6b6b66; --line: #e3e3de;
+    --accent: #1f5f8b; --chip: #eef2f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141413; --surface: #1e1e1c; --ink: #ecebe6; --muted: #a09f98; --line: #33332f;
+      --accent: #7fb4dc; --chip: #26262a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  header, main, footer { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+  header { padding-top: 28px; }
+  nav { font-size: 14px; margin-bottom: 14px; }
+  nav a { margin-right: 14px; }
+  h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); margin: 0 0 8px; }
+  h2 { font-size: 20px; margin: 36px 0 10px; padding-top: 12px; border-top: 1px solid var(--line); }
+  h3 { font-size: 16px; margin: 20px 0 6px; }
+  p { margin: 0 0 12px; }
+  ol, ul { padding-left: 22px; margin: 0 0 12px; }
+  li { margin: 4px 0; }
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); margin: 12px 0 16px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+  th { font-weight: 600; font-size: 13px; color: var(--muted); background: var(--surface); }
+  tr:last-child td { border-bottom: 0; }
+  .flow { display: grid; gap: 8px; margin: 12px 0 16px; }
+  .step { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; }
+  .step b { display: inline-block; width: 26px; height: 26px; border-radius: 50%; background: var(--chip); text-align: center; line-height: 26px; font-size: 13px; }
+  .step .no { color: var(--muted); font-size: 13px; }
+  .toc { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; font-size: 14px; margin: 14px 0 6px; }
+  .toc a { display: inline-block; margin: 2px 14px 2px 0; }
+  footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding: 16px; margin-top: 40px; }
+</style>
+</head>
+<body>
+<header>
+  <nav><a href="index.html">Case library</a> <a href="analysis.html"><b>Analysis</b></a></nav>
+  <h1>AI Process Integration ROI: the analysis</h1>
+  <p class="sub">What the evidence says, how companies decide what to automate, and how to measure the result · analysis as of September 18, 2026 · case data refreshes weekly on the <a href="index.html">library page</a></p>
+  <div class="toc">
+    <a href="#summary">Executive summary</a> <a href="#method">Evidence bar</a> <a href="#macro">State of adoption</a>
+    <a href="#decide">How companies decide</a> <a href="#findings">What the cases show</a> <a href="#measure">Measuring ROI</a> <a href="#maintain">Keeping it current</a>
+  </div>
+</header>
+<main>
+
+<h2 id="summary">Executive summary</h2>
+<p>Measurable AI ROI is real but concentrated: roughly 88% of large organizations now use AI somewhere, yet only 37% can attribute any EBIT impact to it and only about 6% attribute 5% or more (<a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai">McKinsey, Aug 2026</a>). BCG's 2025 survey of 1,250 executives puts 60% of companies in a "laggard" group with minimal revenue or cost gains (<a href="https://www.bcg.com/press/30september2025-ai-leaders-outpace-laggards-revenue-growth-cost-savings">BCG</a>), and MIT NANDA's widely cited 2025 review concluded that 95% of organizations were seeing no measurable return from roughly $30–40B of generative AI spend (<a href="https://virtualizationreview.com/articles/2025/08/19/mit-report-finds-most-ai-business-investments-fail-reveals-genai-divide.aspx">MIT NANDA</a>).</p>
+<p>The companies that do capture value share a recognizable pattern. They pick a narrow, high-volume, rules-plus-judgment process with a clean baseline (invoices per day, days sales outstanding, tickets per agent, hours per close), redesign the workflow rather than layering a chatbot on top of it (73% of McKinsey's high performers redesigned workflows vs. 25% of everyone else), and measure against the pre-AI baseline for at least a quarter. Back-office finance and operations processes produce the most reliable quantified returns; MIT NANDA found budgets skewed toward sales and marketing "despite better ROI in operations and finance."</p>
+<p>The strongest named-company evidence clusters in five process families: invoice and accounts-payable automation (60–90% touchless rates, 65–87% time reduction per document), receivables and collections (5.5–28% DSO reductions, $20M+ cash-flow gains at industrial distributors and CPG firms), expense audit (63–74% auto-approval, 2,000–16,000 audit hours saved per year), customer-support agent assist (14% more issues resolved per hour in the only peer-reviewed field study; 30–49% reductions in after-call work or transfers), and software maintenance (Amazon's $260M annual savings from automated Java upgrades). Headline claims about headcount, by contrast, have a poor track record: Klarna, Commonwealth Bank, and Duolingo each walked back or reframed AI-for-people announcements within a year.</p>
+<p>The practical reading for a $50M+ company: treat AI as process re-engineering with a measurement plan, start with a back-office process where the unit cost is already known, buy rather than build for the first wave (MIT NANDA found vendor tools succeed about twice as often as internal builds), and expect a 3–12 month payback on the good cases and nothing at all on pilots without a baseline.</p>
+
+<h2 id="method">Evidence bar and how to read a case</h2>
+<p>A case enters the library only if a named company (or a rigorous study) states a quantified before/after outcome for a specific business process. Anonymous "a Fortune 500 firm" claims and vendor aggregates without a named customer are excluded, with the exception of peer-reviewed studies that anonymize the firm by design.</p>
+<div class="tablewrap"><table>
+<tr><th>Tier</th><th>Meaning</th><th>Typical source</th></tr>
+<tr><td>High</td><td>Peer-reviewed or randomized field study, or a company figure reproduced consistently over time</td><td>NBER, QJE, Management Science, HBR case co-authored with the company</td></tr>
+<tr><td>Medium-high</td><td>Named company, named executive, stated baseline and timeframe; vendor may host the story</td><td>Microsoft/AWS customer stories with baselines, company press releases with methodology</td></tr>
+<tr><td>Medium</td><td>Named company and metric but missing baseline or timeframe; self-reported</td><td>Vendor case studies, earnings-call remarks, CEO interviews</td></tr>
+<tr><td>Low–medium</td><td>Pilot-stage, projected, or survey-of-users figures</td><td>"Forecast benefit", "up to" claims, POCs</td></tr>
+</table></div>
+<p>Three reading rules apply. "Vendor-reported" means the number comes from the software vendor's marketing page, even when a customer executive is quoted; these figures are directionally useful but rarely audited. Capacity claims ("equivalent to 700 agents", "4,500 developer-years") are estimates against a counterfactual and are not the same as booked savings. A company's later reversal or clarification is recorded with the case rather than deleting it, because the reversal is itself evidence about what the process change did and did not deliver.</p>
+
+<h2 id="macro">State of adoption and returns</h2>
+<p>Adoption is near-universal among large companies while measured financial impact has stalled at roughly a third of them for two years running. The large surveys agree on the shape even though they disagree on the numbers, because each samples a different population: McKinsey and BCG survey executives at mostly $1B+ firms, the U.S. Census surveys all employer businesses, and MIT NANDA reviewed disclosed initiatives plus interviews. The full macro table, with sample sizes and links, is on the <a href="index.html#macro">library page</a>.</p>
+<p>Three conclusions follow. Individual-productivity deployments (a Copilot or ChatGPT seat per employee) reliably produce self-reported time savings of 20–45 minutes a day but rarely show up in EBIT, which is the gap between McKinsey's 80% "AI improved my productivity" and 37% "EBIT impact". Process-level deployments with a redesigned workflow are what separate the 5–6% high performers from the rest. And the failure mode is not the model but the absence of a baseline, an owner, and a mechanism for the system to retain feedback and improve; MIT NANDA identified "learning rather than infrastructure, regulation, or talent" as the core barrier.</p>
+<p>A note on the 95% figure: it comes from a small, non-random sample (52 interviews, 153 conference surveys) and defines "return" as measurable P&amp;L impact within about six months of the pilot. It is best read as a statement about pilot design rather than about the technology.</p>
+
+<h2 id="decide">How companies decide what to automate</h2>
+<p>The companies with quantified results chose processes by unit economics first and technology second. The common screen, reconstructed from the cases and from the BCG, McKinsey and MIT NANDA analyses, runs on five tests.</p>
+<ol>
+<li><b>Volume and repetition:</b> the process runs thousands of times a month with a known cost per unit (GameStop hand-keyed 750,000 invoices a year; Danone handled 1.1M deduction claims; Klarna had 2.3M support chats a month).</li>
+<li><b>A measurable baseline already exists:</b> cost per invoice, DSO, first-contact resolution, hours per close, time-to-hire. If the metric has to be invented for the pilot, the pilot will not prove ROI.</li>
+<li><b>Structured judgment, not open-ended creativity:</b> matching, classifying, extracting, summarizing, routing and drafting against rules. The academic evidence shows the largest gains where the task sits inside the model's competence and the smallest, or negative, gains outside it.</li>
+<li><b>Tolerable error cost with a human backstop:</b> exception queues, auto-approval thresholds, or agent-assist rather than agent-replace.</li>
+<li><b>A named owner in the function, not in IT:</b> BCG's 70% "people, process and behavior" share is the reason, and Deloitte finds only 30% of firms actually redesign the process.</li>
+</ol>
+<h3>Screening flow</h3>
+<div class="flow">
+  <div class="step"><b>1</b><div>Inventory processes by volume × cost per unit.</div></div>
+  <div class="step"><b>2</b><div>Is the baseline measurable? <span class="no">No → instrument first, revisit next quarter.</span></div></div>
+  <div class="step"><b>3</b><div>Is it a bounded rules-plus-judgment task? <span class="no">No → human-led, AI assist only.</span></div></div>
+  <div class="step"><b>4</b><div>Is the error cost tolerable with a backstop? <span class="no">No → human-led, AI assist only.</span></div></div>
+  <div class="step"><b>5</b><div>Buy or embed in the existing system; run a 90-day pilot against the baseline with an owner in the function.</div></div>
+  <div class="step"><b>6</b><div>Payback under 12 months? <span class="no">Yes → scale and redesign the workflow. No → back to step 2.</span></div></div>
+</div>
+<p><b>Build, buy or embed.</b> The evidence favors buying or embedding for a first wave. MIT NANDA found vendor-built tools succeed roughly twice as often as internal builds; the finance cases with the cleanest numbers all run on embedded vendor AI (Coupa, HighRadius, AppZen, Rossum, Vic.ai, Pactum) inside an existing ERP or P2P flow. Internal builds pay off where the company has a large engineering organization and a proprietary data advantage (JPMorgan's LLM Suite, Airbnb's test-migration pipeline, Amazon Q for Java upgrades). McKinsey's 2026 survey notes nearly a third of respondents declined a software purchase in favor of building with agentic coding tools, so the line is moving, but the ROI evidence for internal builds is still concentrated in software-heavy firms.</p>
+<p><b>Where budgets go versus where returns are.</b> MIT NANDA reports AI budgets skewed to sales and marketing while back-office operations and finance show better ROI; BCG puts 70% of AI value in core functions such as sales, manufacturing, supply chain and pricing and only 13% in IT. Read together: front-office revenue lift is larger but harder to attribute, back-office cost reduction is smaller but provable. A company that needs to demonstrate ROI to a board should start in the back office and fund front-office experiments from those savings.</p>
+<p><b>Governance.</b> Deloitte finds only 21% of organizations have a mature governance model for agents, and Gartner expects 40%+ of agentic projects to be canceled by end-2027 on cost, unclear value or inadequate risk controls. The practical minimum is a use-case register with owner, baseline metric, target, decision date and kill criteria, reviewed quarterly.</p>
+
+<h2 id="findings">What the cases show, by function</h2>
+<p><b>Finance and back office.</b> Touchless rates of 60–90% and per-document time reductions of 65–88% are repeatable across AP vendors and industries once invoice volume exceeds roughly 100,000 a year. Receivables AI pays back in cash rather than headcount: DSO reductions of 5–28% and recovered deductions in the tens of millions at CPG scale. Expense audit is the cleanest "100% coverage replaces sampling" story, with 63–74% auto-approval and 2,000–16,000 hours a year saved. Close and reconciliation gains are real but small and mostly hours-based. Tax and external audit have no named-company quantified cases yet.</p>
+<p><b>Customer-facing.</b> The rigorous number is +14% resolved issues per agent-hour, concentrated in less-experienced agents, which shows up as slower hiring rather than layoffs. Company-reported containment of two-thirds of chats (Klarna) or 70% first-time resolution (Vodafone) is achievable for high-volume, low-complexity contact types, but the Klarna and CBA episodes show that removing humans faster than the containment rate justifies produces quality and volume rebounds within 12 months. Revenue-side claims (Amazon's $10B, Lumen's $50M) rest on attribution models and belong in a lower confidence tier than cost-side numbers.</p>
+<p><b>Operations and energy.</b> Quantified evidence exists for negotiation (Walmart) and fulfillment automation (Amazon), not yet for AI route or load optimization at a named shipper. The DeepMind cooling result remains the only named, quantified AI energy-cost case at scale; 10–15% of controllable HVAC energy is the defensible planning figure, and a vendor should name a reference site with metered before/after data.</p>
+<p><b>People and IT.</b> Bounded service-desk automation (IBM, Bank of America) delivers 50–75% ticket or call reductions because the question set is finite. Recruiting automation compresses cycle time (Chipotle's 12 → 4 days) because the bottleneck was scheduling. Software maintenance at scale (Amazon, Airbnb) is the clearest "millions of dollars, one project" story. Seat-based copilots deliver 20–45 self-reported minutes a day, which only becomes ROI if the organization redesigns work to capture it; the Danish study's 2.8% time saving and zero wage effect is the honest base rate for copilots without process change.</p>
+
+<h2 id="measure">Measuring ROI</h2>
+<p>The cases that survive scrutiny all measure one process-level metric against a pre-AI baseline over a fixed window, then convert it to dollars with a rate the finance team already accepts. The cases that get reversed measure capacity ("equivalent to N people") and act on it before the quality metrics catch up.</p>
+<div class="tablewrap"><table>
+<tr><th>Process</th><th>Primary metric</th><th>Guardrail metric</th><th>Dollar conversion</th></tr>
+<tr><td>Accounts payable</td><td>Cost per invoice; touchless rate</td><td>Exception rate; duplicate/late payments</td><td>(baseline − new cost) × annual volume; discounts captured</td></tr>
+<tr><td>Accounts receivable</td><td>DSO; cash-application auto-match rate</td><td>Disputed-invoice rate; write-offs</td><td>DSO days reduced × daily revenue × cost of capital</td></tr>
+<tr><td>Deductions and claims</td><td>Days to resolve; % invalid deductions recovered</td><td>Disputes reopened</td><td>Recovered dollars net of tool cost</td></tr>
+<tr><td>Procurement</td><td>Savings % on negotiated spend; cycle time to PO</td><td>Supplier acceptance; maverick spend</td><td>Savings % × addressable spend</td></tr>
+<tr><td>Expense audit</td><td>Auto-approval rate; audit hours</td><td>Out-of-policy catch rate</td><td>Hours × loaded rate + recovered spend</td></tr>
+<tr><td>Close and reconciliation</td><td>Days to close; hours per reconciliation</td><td>Post-close adjustments</td><td>Hours × loaded rate</td></tr>
+<tr><td>Customer support</td><td>Issues resolved per agent-hour; containment</td><td>CSAT; repeat contacts; escalations</td><td>Avoided hires or BPO spend</td></tr>
+<tr><td>Recruiting</td><td>Time to hire; application completion</td><td>90-day retention</td><td>Vacancy days × daily cost of vacancy</td></tr>
+<tr><td>IT / HR helpdesk</td><td>Tickets or calls deflected</td><td>Reopen rate; satisfaction</td><td>Deflected tickets × cost per ticket</td></tr>
+<tr><td>Software maintenance</td><td>Engineer-hours per migration</td><td>Defect rate post-change</td><td>Hours × loaded rate</td></tr>
+<tr><td>Energy / facilities</td><td>kWh per unit of output or square foot</td><td>Comfort and fault incidents</td><td>kWh saved × tariff</td></tr>
+</table></div>
+<p><b>Baseline method.</b> Record at least three months of the primary and guardrail metrics before the change, freeze the definitions, and run the AI process on a subset (a business unit, a supplier tier, a contact type) alongside the unchanged remainder for a quarter. The academic studies that produced credible numbers all used a comparison-group design; a company can do a simpler version by phasing rollout across sites or teams.</p>
+<p><b>Common measurement mistakes:</b> counting capacity as savings before headcount or BPO spend actually changes; ignoring guardrail metrics (Klarna and CBA acted on containment forecasts before CSAT and volume data confirmed them); reporting only the winners (the METR study found expert developers 19% slower while believing they were faster); omitting the cost side (McKinsey finds one in five organizations constrained by AI operating costs); and letting the pilot define the metric.</p>
+
+<h2 id="maintain">Keeping it current</h2>
+<p>The case library on the <a href="index.html">main page</a> refreshes automatically each week: a scheduled research pass checks the recurring sources (McKinsey, Stanford AI Index, BCG, Deloitte, Gartner, U.S. Census BTOS, Ardent Partners, APQC, NBER/SSRN, cloud-provider and vendor case hubs, and finance/CX trade press), adds cases that meet the evidence bar, re-checks High and Medium-high cases for reversals, and records every change in the library's change log. This analysis page is revised by hand when the findings shift; its date is in the header. Current evidence gaps: tax, external audit, AI route/load optimization at a named shipper, and utility-cost AI beyond the DeepMind case.</p>
+
+</main>
+<footer>Sources are linked inline and in each library entry. Vendor-reported figures are read from the vendor's own page and are not audited. Companion document with full tables: <a href="https://claude.ai/code/artifact/fc67e363-83ee-4810-b701-544cc25ec12c">AI Process Integration ROI Library</a>.</footer>
+</body>
+</html>
